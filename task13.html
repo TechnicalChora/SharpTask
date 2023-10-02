@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Storage Task 12</title>
+</head>
+<body>
+    <h1>User Data Local Storage </h1>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter name"><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter email"><br>
+
+    <label for="mobile">Mobile Number:</label>
+    <input type="tel" id="mobile" placeholder="Enter mobile number"><br>
+
+    <button id="saveButton">Save to Local Storage</button>
+
+    <h2>Stored Users</h2>
+    <ul id="userList">
+       
+    </ul>
+
+    <script>
+       
+        function addUserToLocalStorage(name, email, mobile) {
+            const newUser = {
+                name: name,
+                email: email,
+                mobile: mobile,
+            };
+
+           
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+          
+            users.push(newUser);
+
+           
+            localStorage.setItem('users', JSON.stringify(users));
+
+          
+            displayUsers();
+        }
+        function deleteUserFromLocalStorage(index) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            if (index >= 0 && index < users.length) {
+                users.splice(index, 1);
+                localStorage.setItem('users', JSON.stringify(users));
+                displayUsers();
+            }
+        }
+       
+        function displayUsers() {
+            const userList = document.getElementById('userList');
+            userList.innerHTML = ''; 
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            
+            users.forEach((user, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `User ${index + 1}:<br>Name: ${user.name}<br>Email: ${user.email}<br>Mobile: ${user.mobile}<br><br>`;
+                
+                 const deleteButton = document.createElement('button');
+                deleteButton.innerText = 'Delete';
+                deleteButton.addEventListener('click', () => {
+                    deleteUserFromLocalStorage(index);
+                });
+
+                listItem.appendChild(deleteButton);
+                userList.appendChild(listItem);
+            });
+        }
+
+       
+        const saveButton = document.getElementById('saveButton');
+        saveButton.addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+
+            if (name && email && mobile) {
+                addUserToLocalStorage(name, email, mobile);
+            } else {
+                alert('Please enter all fields: name, email, and mobile number.');
+            }
+        });
+
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            localStorage.clear();
+            displayUsers(); 
+        });
+    </script>
+</body>
+</html>
