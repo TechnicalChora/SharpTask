@@ -1,10 +1,13 @@
 
 var from =document.getElementById('addForm');
 var itemlist =document.getElementById('items');
+var filter =document.getElementById('filter');
 
 
 from.addEventListener('submit',addItem);
 itemlist.addEventListener('click',remove);
+filter.addEventListener('keyup',filteritem);
+ 
 
 function addItem(e){
     e.preventDefault();
@@ -29,6 +32,13 @@ function remove(e){
 
         }
     }
+
+}
+function filteritem(e){
+    var text =e.target.value.toLowerCase();
+    console.log(text);
+    
+
 
 }
   
