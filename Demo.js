@@ -1,10 +1,7 @@
-const fruit = document.getElementsByClassName('fruit');
-fruit[2].style.backgroundColor='yellow';
-fruit[0].style.fontWeight='bold';
-fruit[1].style.fontWeight='bold';
-fruit[2].style.fontWeight='bold';
-fruit[3].style.fontWeight='bold';
-const basket_heading = document.getElementById('basket-heading');
-basket_heading.style.fontWeight='bold';
-const main_heading = document.getElementById('main-heading');
-main_heading.style.fontWeight='bold';
+const li = document.getElementsByTagName('li');
+li[4].style.color='blue';
+li[0].style.fontStyle='italic';
+li[1].style.fontStyle='italic';
+li[2].style.fontStyle='italic';
+li[3].style.fontStyle='italic';
+li[4].style.fontStyle='italic';
