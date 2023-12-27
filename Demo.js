@@ -1,6 +1,10 @@
-document.getElementById('main-heading').innerHTML="Fruit World";
-document.getElementById('main-heading').style.color="orange";
-document.getElementById('header').style.background="green";
-document.getElementById('header').style.borderColor = 'Orange';
-document.getElementById('basket-heading').style.color="green";
-document.getElementById('thanks').innerHTML="<p>Please visit us again</p>";
+const fruit = document.getElementsByClassName('fruit');
+fruit[2].style.backgroundColor='yellow';
+fruit[0].style.fontWeight='bold';
+fruit[1].style.fontWeight='bold';
+fruit[2].style.fontWeight='bold';
+fruit[3].style.fontWeight='bold';
+const basket_heading = document.getElementById('basket-heading');
+basket_heading.style.fontWeight='bold';
+const main_heading = document.getElementById('main-heading');
+main_heading.style.fontWeight='bold';
